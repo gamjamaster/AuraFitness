@@ -1,6 +1,6 @@
 // 전역 Supabase 클라이언트 초기화
 window.supabaseUrl = 'https://jfrxukwkeahtqacohgtj.supabase.co'
-window.supabaseKey = 'YOUR_SUPABASE_ANON_KEY'
+window.supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impmcnh1a3drZWFodHFhY29oZ3RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNDM1NDcsImV4cCI6MjA2MzkxOTU0N30.zlyHwcqB-v_cK4lbh5-7MmJGt7bz6egjTLU5vecKPD4'
 window.supabaseClient = window.supabase.createClient(window.supabaseUrl, window.supabaseKey)
 
 // 로그인 상태 확인
