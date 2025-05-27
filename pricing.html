@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Gym</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Gym</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pricing-page">
+        <section class="pricing-hero">
+            <h1>Membership Pricing</h1>
+            <p>Choose the perfect membership plan for you</p>
+        </section>
+
+        <section class="pricing-content">
+            <div class="container">
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>1 Month</h3>
+                            <div class="price">
+                                <span class="amount">150,000</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Basic Facility Access</li>
+                            <li>4 Group Classes</li>
+                            <li>Sauna Access</li>
+                            <li>Free Parking</li>
+                        </ul>
+                        <button onclick="selectMembership('1month')" class="select-btn">Select Plan</button>
+                    </div>
+
+                    <div class="pricing-card popular">
+                        <div class="popular-tag">Popular</div>
+                        <div class="pricing-header">
+                            <h3>3 Months</h3>
+                            <div class="price">
+                                <span class="amount">400,000</span>
+                                <span class="period">/3 months</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Basic Facility Access</li>
+                            <li>12 Group Classes</li>
+                            <li>Sauna Access</li>
+                            <li>Free Parking</li>
+                            <li>1 Free PT Session</li>
+                        </ul>
+                        <button onclick="selectMembership('3month')" class="select-btn">Select Plan</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>6 Months</h3>
+                            <div class="price">
+                                <span class="amount">700,000</span>
+                                <span class="period">/6 months</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Basic Facility Access</li>
+                            <li>24 Group Classes</li>
+                            <li>Sauna Access</li>
+                            <li>Free Parking</li>
+                            <li>3 Free PT Sessions</li>
+                            <li>1 Nutrition Consultation</li>
+                        </ul>
+                        <button onclick="selectMembership('6month')" class="select-btn">Select Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gym. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function selectMembership(type) {
+            const { data: { user } } = supabase.auth.getUser();
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Membership selection handling
+            alert('Membership selection completed. Redirecting to payment page.');
+            // Redirect to payment page
+        }
+    </script>
+</body>
+</html> 

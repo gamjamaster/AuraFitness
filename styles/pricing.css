@@ -1,0 +1,117 @@
+.pricing-hero {
+    height: 540px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/pricing-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 150px;
+}
+
+.pricing-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-hero p {
+    font-size: 1.6rem;
+    color: rgb(180, 180, 180);
+}
+
+.pricing-content {
+    padding: 4rem 1rem;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.price-card {
+    background-color: #002438;
+    border: 4px solid #00304a;
+    width: 350px;
+    height: 299px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.price-card:hover {
+    border-color: var(--primary-color);
+}
+
+.price-card h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.price-card h1 {
+    color: var(--secondary-color);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.price-card ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.price-card ul li {
+    color: white;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.price-card ul li span {
+    color: var(--secondary-color);
+}
+
+.price-card .cta-button {
+    width: 100%;
+    text-align: center;
+}
+
+.price-card.recommended {
+    position: relative;
+}
+
+.price-card.recommended::before {
+    content: "Recommended";
+    position: absolute;
+    top: -20px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .pricing-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .pricing-hero p {
+        font-size: 1.2rem;
+    }
+
+    .price-card {
+        width: 100%;
+        height: auto;
+    }
+} 

@@ -1,0 +1,150 @@
+.contact-hero {
+    height: 540px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/contact-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.contact-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.contact-hero p {
+    font-size: 1.6rem;
+    color: rgb(180, 180, 180);
+}
+
+.contact-content {
+    padding: 4rem 1rem;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 40px;
+    padding: 2rem;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-item img {
+    width: 32px;
+    height: 32px;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.contact-info li img {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-info li p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.contact-info li ul {
+    list-style: none;
+    margin-left: 3.5rem;
+}
+
+.contact-info li ul li {
+    margin-bottom: 0.5rem;
+}
+
+.contact-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0762fe;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .contact-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-hero p {
+        font-size: 1.2rem;
+    }
+
+    .contact-card {
+        width: 100%;
+    }
+} 

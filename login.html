@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 헬스장</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">헬스장</div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="classes.html">수업</a></li>
+                <li><a href="trainers.html">트레이너</a></li>
+                <li><a href="pricing.html">가격</a></li>
+                <li><a href="contact.html">문의</a></li>
+                <li><a href="login.html" class="login-btn">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h1>로그인</h1>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">로그인</button>
+                </form>
+                <div class="auth-links">
+                    <a href="register.html">회원가입</a>
+                    <a href="#" onclick="handleForgotPassword()">비밀번호 찾기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 헬스장. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+                email: formData.get('email'),
+                password: formData.get('password')
+            });
+
+            if (error) {
+                alert('로그인에 실패했습니다: ' + error.message);
+                return;
+            }
+
+            window.location.href = 'index.html';
+        }
+
+        async function handleForgotPassword() {
+            const email = prompt('비밀번호를 재설정할 이메일 주소를 입력하세요:');
+            if (!email) return;
+
+            const { error } = await window.supabaseClient.auth.resetPasswordForEmail(email);
+            
+            if (error) {
+                alert('비밀번호 재설정 이메일 전송에 실패했습니다: ' + error.message);
+                return;
+            }
+
+            alert('비밀번호 재설정 이메일이 전송되었습니다.');
+        }
+    </script>
+</body>
+</html> 

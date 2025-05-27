@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이너 - 헬스장</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">헬스장</div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="classes.html">수업</a></li>
+                <li><a href="trainers.html">트레이너</a></li>
+                <li><a href="pricing.html">가격</a></li>
+                <li><a href="contact.html">문의</a></li>
+                <li><a href="login.html" class="login-btn">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="trainers-page">
+        <section class="trainers-hero">
+            <h1>전문 트레이너</h1>
+            <p>당신의 피트니스 목표를 달성하도록 도와드립니다</p>
+        </section>
+
+        <section class="trainers-content">
+            <div class="container">
+                <div class="trainers-grid" id="trainersGrid">
+                    <!-- 트레이너 카드들이 JavaScript로 동적 생성됩니다 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 헬스장. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 트레이너 데이터 로드 및 표시
+        async function loadTrainers() {
+            const { data: trainers, error } = await supabase
+                .from('trainers')
+                .select('*')
+                .order('name');
+
+            if (error) {
+                console.error('트레이너 데이터 로드 실패:', error);
+                return;
+            }
+
+            const grid = document.getElementById('trainersGrid');
+            grid.innerHTML = '';
+
+            trainers.forEach(trainer => {
+                const card = document.createElement('div');
+                card.className = 'trainer-card';
+                card.innerHTML = `
+                    <img src="${trainer.image_url || 'images/default-trainer.jpg'}" alt="${trainer.name}">
+                    <div class="trainer-info">
+                        <h3>${trainer.name}</h3>
+                        <p class="specialization">${trainer.specialization}</p>
+                        <p class="experience">경력 ${trainer.experience_years}년</p>
+                        <p class="bio">${trainer.bio}</p>
+                        <button onclick="showReviews('${trainer.id}')" class="review-btn">리뷰 보기</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 리뷰 모달 표시
+        async function showReviews(trainerId) {
+            const { data: reviews, error } = await supabase
+                .from('reviews')
+                .select('*, users:user_id(email)')
+                .eq('trainer_id', trainerId)
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('리뷰 로드 실패:', error);
+                return;
+            }
+
+            // 리뷰 모달 생성 및 표시 로직
+            const modal = document.createElement('div');
+            modal.className = 'review-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h2>트레이너 리뷰</h2>
+                    <div class="reviews-list">
+                        ${reviews.map(review => `
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="user-email">${review.users.email}</span>
+                                    <span class="rating">★ ${review.rating}</span>
+                                </div>
+                                <p class="review-comment">${review.comment}</p>
+                                <span class="review-date">${new Date(review.created_at).toLocaleDateString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="close-btn">닫기</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // 페이지 로드 시 트레이너 데이터 로드
+        document.addEventListener('DOMContentLoaded', loadTrainers);
+    </script>
+</body>
+</html> 

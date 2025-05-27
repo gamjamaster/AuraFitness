@@ -1,0 +1,115 @@
+.classes-hero {
+    height: 540px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/classes-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 150px;
+}
+
+.classes-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.classes-hero p {
+    font-size: 1.6rem;
+    color: rgb(180, 180, 180);
+}
+
+.classes-content {
+    padding: 4rem 1rem;
+}
+
+.classes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.class-card {
+    display: flex;
+    margin: 20px;
+    width: 70%;
+}
+
+.class-card .class-image {
+    height: 600px;
+    border-radius: 70px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('../images/class-bg.jpg') no-repeat center center;
+    overflow: hidden;
+    background-size: cover;
+    flex: 1;
+}
+
+.class-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.class-info h2 {
+    font-size: 50px;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.class-info p {
+    max-width: 600px;
+    margin: 0 40px;
+    padding-bottom: 40px;
+    font-size: 20px;
+    color: white;
+}
+
+.class-info .cta-button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.class-info .cta-button:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .classes-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .classes-hero p {
+        font-size: 1.2rem;
+    }
+
+    .class-card {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .class-card .class-image {
+        height: 300px;
+    }
+
+    .class-info {
+        padding: 20px;
+    }
+
+    .class-info h2 {
+        font-size: 2rem;
+    }
+
+    .class-info p {
+        font-size: 1rem;
+        margin: 0;
+    }
+} 
